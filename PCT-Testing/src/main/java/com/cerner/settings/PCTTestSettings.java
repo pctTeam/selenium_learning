@@ -19,7 +19,7 @@ public class PCTTestSettings extends ExtentReporting {
                 + "Testing" + File.separator + "TestNG Selenium Project Reports";
       }
       if (OS.equals("Mac OS X")) {
-          reportPath = "smb://hnagroup/PMO/Program Management/Project GO/Testing/TestNG Selenium Project Reports";
+          reportPath = "Reports";
       }
   }
 }

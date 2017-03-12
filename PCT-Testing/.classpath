@@ -17,5 +17,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="Resources/Cerner-Selenium-Utilities.jar"/>
+	<classpathentry kind="lib" path="Resources/extentreports-2.40.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
