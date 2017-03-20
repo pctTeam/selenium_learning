@@ -3,5 +3,15 @@
 	"username": "jw027642",
 	"password": "asdf",
 	"patient1": "Hanks, Lorrie",
-	"encounter1": "20001330"
+	"encounter1": "20001330",
+	"favoriteTemplate1": [
+		"Cardiology APSO Note",
+		"ED Note"
+	],
+	"patient2": "COOT, ALLAN",
+	"encounter2": "20001433",
+	"username2": "cs028473",
+	"password2": "cs028473",
+	"url2": "https://ion-immunizations.test.devcernerpowerchart.com/search/patients",
+	"url3": "https://ion-schedule.test.devcernerpowerchart.com/provider/schedule/orion_list?date=2016-08-12"
 }
