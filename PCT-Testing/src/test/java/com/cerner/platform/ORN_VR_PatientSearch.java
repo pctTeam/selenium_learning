@@ -5,29 +5,27 @@
 
 package test.java.com.cerner.platform;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-
+import java.io.*;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.support.PageFactory;
 
 import main.java.com.cerner.extentReporting.*;
 import main.java.com.cerner.common.*;
+import main.java.com.cerner.dataFile.*;
 import main.java.com.cerner.patientEncounterSelect.*;
 import main.java.com.cerner.platform.pageObjects.*;
 import main.java.com.cerner.settings.PCTTestSettings;
 
-public class ORN_VR_PatientSearch_Test extends ExtentReporting {
+public class ORN_VR_PatientSearch extends PCTTestSettings {
 
 
   @BeforeTest
-  public void setup() {
+  public void setup() throws IOException, ParseException{
+    testName= this.getClass().getSimpleName();
     PCTTestSettings.GetStarted();
+    JSONData.initJson(testName);
   }
 
   @Test
@@ -40,21 +38,14 @@ public class ORN_VR_PatientSearch_Test extends ExtentReporting {
     EncounterViewPage encounterView = PageFactory.initElements(driver, EncounterViewPage.class);
     ExtentVerifications verify = new ExtentVerifications();
 
-    // Declare testname - used for reporting and json file
-    testName = "ORN_VR_PatientSearch";
-
-    // Testing using JSON file
-    JSONParser parser = new JSONParser();
-    JSONObject jsonObject = (JSONObject) parser.parse(new FileReader(
-        projectFolderPath + File.separator + "DataFiles" + File.separator + testName + ".json"));
 
     // Start report for the test
     ExtentReporting.startReporting();
 
     // Declare variables
-    String baseUrl = (String) jsonObject.get("url");
-    String username = (String) jsonObject.get("username");
-    String password = (String) jsonObject.get("password");
+    String baseUrl = (String) jObj.get("url");
+    String username = (String) jObj.get("username");
+    String password = (String) jObj.get("password");
     String searchstring = "";
     String expectedResult = "";
 
@@ -62,30 +53,30 @@ public class ORN_VR_PatientSearch_Test extends ExtentReporting {
     CommonActions.login(baseUrl, username, password);
 
     // Verify that X button clears patient search
-    searchstring = (String) jsonObject.get("genericSearchString");
+    searchstring = (String) jObj.get("genericSearchString");
     CommonActions.enterText(patient.patientSearchTextBox, searchstring);
     CommonActions.clickElement(patient.xButton);
     verify.verifyFalse(patientSrch.patientSearchText().contains(searchstring),
         "Scenario 1 - X button clears out Patient Search text", "Patient Search text is empty");
 
     // Verify correct name returned using name search
-    searchstring = (String) jsonObject.get("patientSearchStringName");
-    expectedResult = (String) jsonObject.get("expectedFullName");
+    searchstring = (String) jObj.get("patientSearchStringName");
+    expectedResult = (String) jObj.get("expectedFullName");
     patient.enterPatientsearchString(searchstring);
     verify.verifyWithScreen(patientSrch.findPatient(expectedResult),
         "Scenario 2 - Search Using Name", "Correct name in search results", "SearchResultbyName");
 
     // Verify correct name returned using FIN search
-    searchstring = (String) jsonObject.get("patientSearchStringFIN");
-    expectedResult = (String) jsonObject.get("expectedFullNameFIN");
+    searchstring = (String) jObj.get("patientSearchStringFIN");
+    expectedResult = (String) jObj.get("expectedFullNameFIN");
     patient.enterPatientsearchString(searchstring);
     verify.verifyWithScreen(patientSrch.findPatient(expectedResult),
         "Scenario 3 - Search Using FIN", "Correct name in search results", "SearchResultbyFIN");
 
 
     // Verify correct name returned using MRN search
-    searchstring = (String) jsonObject.get("patientSearchStringMRN");
-    expectedResult = (String) jsonObject.get("expectedFullNameMRN");
+    searchstring = (String) jObj.get("patientSearchStringMRN");
+    expectedResult = (String) jObj.get("expectedFullNameMRN");
     patient.enterPatientsearchString(searchstring);
     verify.verifyWithScreen(patientSrch.findPatient(expectedResult),
         "Scenario 4 - Search Using MRN", "Correct name in search results", "SearchResultbyMRN");
@@ -99,7 +90,7 @@ public class ORN_VR_PatientSearch_Test extends ExtentReporting {
 
     // verify Encounter found
     CommonActions.clickElement(encounter.allButton);
-    expectedResult = (String) jsonObject.get("expectedEncounter");
+    expectedResult = (String)jObj.get("expectedEncounter");
     verify.verifyWithScreen(encounterView.findEncounter(expectedResult),
         "Scenario 6 - Encounter Results ", "Correct encounter shown in All encounter results",
         "EncounterResult");

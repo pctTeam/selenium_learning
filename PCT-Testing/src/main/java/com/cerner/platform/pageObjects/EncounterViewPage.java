@@ -37,6 +37,10 @@ public class EncounterViewPage {
   @FindBy(css = ".ion-encounter-detail > h6")
   public List<WebElement> encounterElements;
 
+  // Locate the Title
+  @FindBy(id = "ion-encounters-title")
+  public WebElement encounterTitle;
+
 
   // Method to get name in Demographics bar
   public String getDemoBarName() {
@@ -49,6 +53,14 @@ public class EncounterViewPage {
       if (encElement.getText().contains(expectedEncounter)) {
         return true;
       }
+    }
+    return false;
+  }
+
+  // Verify encounter page title
+  public Boolean encounterTitle() {
+    if (encounterTitle.isDisplayed()) {
+      return true;
     }
     return false;
   }

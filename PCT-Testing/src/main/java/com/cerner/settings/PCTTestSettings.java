@@ -5,9 +5,10 @@
 package main.java.com.cerner.settings;
 
 import java.io.File;
-import main.java.com.cerner.extentReporting.*;
 
-public class PCTTestSettings extends ExtentReporting {
+import main.java.com.cerner.dataFile.JSONData;
+
+public class PCTTestSettings extends JSONData {
   
   public static void GetStarted() {
     browserName = "chrome" ;
@@ -19,7 +20,7 @@ public class PCTTestSettings extends ExtentReporting {
                 + "Testing" + File.separator + "TestNG Selenium Project Reports";
       }
       if (OS.equals("Mac OS X")) {
-          reportPath = "Reports";
+          reportPath = "smb://hnagroup/PMO/Program Management/Project GO/Testing/TestNG Selenium Project Reports";
       }
   }
 }

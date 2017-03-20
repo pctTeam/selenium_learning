@@ -3,7 +3,7 @@
 <suite name="ORN_VR_BaseTemplate" >
  <test name="ORN_VR_BaseTemplate">
     <classes>
-      <class name="test.java.com.cerner.platform.ORN_VR_BaseTemplate_Test"/>
+      <class name="test.java.com.cerner.platform.ORN_VR_BaseTemplate"/>
     </classes>
   </test>
 </suite>
