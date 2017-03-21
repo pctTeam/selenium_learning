@@ -1,0 +1,10 @@
+{
+	"url" : "https://deveng.test.devcernerpowerchart.com/search/patients",
+	"username": "jw027642",
+	"password": "asdf",
+	"patient" : "Estb, Confidential",
+	"encounter": "20000634",
+	"confMsg": "The patient record for Estb, Confidential is confidential.",
+	"confHeader": "Confidential Record"
+
+}

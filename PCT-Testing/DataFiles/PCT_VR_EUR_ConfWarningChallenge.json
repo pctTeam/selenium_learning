@@ -1,0 +1,15 @@
+{
+	"url" : "https://deveng.test.devcernerpowerchart.com/search/patients",
+	"username": "jw027642",
+	"password": "asdf",
+	"patient" : "PCTAUT, NavSensitivityPt",
+	"patient2" : "TEST, IRFPAI",
+	"encounter": "20003748",
+	"confMsg": "The patient record for PCTAUT, NavSensitivityPt is confidential.",
+	"confHeader": "Confidential Record",
+	"eurHeader": "Establish Relationship",
+	"encTitle": "Select Encounter",
+	"mrn" : "34257865",
+	"dob": "05/24/1960"
+
+}
