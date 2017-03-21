@@ -110,10 +110,11 @@ public class PCT_VR_EUR_ConfWarningChallenge extends PCTTestSettings{
 	    
 	    
 	    //Step 7: Logout of the Application
-	  //  tearDown();
 	    
 	    //Step 8: Re-login and check the confidential message
-	    CommonActions.loginGoToPatientEncounter(baseUrl, username, password, patient, encounter);
+	    CommonActions.changeUsers(baseUrl, username, password);
+	    CommonActions.goToPatientEncounter(baseUrl, patient2, encounter);
+	    
 	    //**Alert Accept : Function pending
 	    verify.verifyWithScreen(crObj.confRecrdHeadTxt.getText(), confHeader, "Step 8", "Verifying Confidential Record Header", 
 	    		"Step 8 - Confidential Record Page");
@@ -121,7 +122,12 @@ public class PCT_VR_EUR_ConfWarningChallenge extends PCTTestSettings{
 	    
 	    //Step 9: Click Continue and check the patient chart opens
 	    CommonActions.clickElement(crObj.continueBtn);
+	    
+	    boolean result = eurObj.eurPresence(eurHead);
+	    verify.verifyFalse(result, "Step 9", "Verifying the absence of the EUR Page");
+	    
 	    //**How to check absence of the EUR page
+	    
 	    
 		//Stop Extent Reporting
 		ExtentReporting.endReporting();

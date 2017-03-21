@@ -13,7 +13,7 @@ public class EstdUserRelation {
 	@FindBy(css = ".mfp-close.icon-dismiss")
 	public WebElement dismissBtn;
 	
-	@FindBy(id = "ion-ppr-establish-relationship-header")
+	@FindBy(css = ".btn.btn-primary.ion-ppr-continue-button")
 	public WebElement continueBtn;
 	
 	@FindBy(id = "ion-ppr-justification-textarea")
@@ -35,5 +35,23 @@ public class EstdUserRelation {
 			}
 		}
 	}
+	
+	public boolean isElementPresent(WebElement eurHead){
+		if (eurHead.contains(EURHeader)) {
+			return true;
+		}
+		return false;
+	}
+	
+	/*
+	public boolean isElementPresent(By locatorKey) {
+	    try {
+	        driver.findElement(locatorKey);
+	        return true;
+	    } catch (org.openqa.selenium.NoSuchElementException e) {
+	        return false;
+	    }
+	}
+	*/
 	
 }
