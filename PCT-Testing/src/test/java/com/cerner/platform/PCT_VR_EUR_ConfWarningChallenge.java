@@ -110,7 +110,7 @@ public class PCT_VR_EUR_ConfWarningChallenge extends PCTTestSettings{
 	    
 	    
 	    //Step 7: Logout of the Application
-	    tearDown();
+	  //  tearDown();
 	    
 	    //Step 8: Re-login and check the confidential message
 	    CommonActions.loginGoToPatientEncounter(baseUrl, username, password, patient, encounter);
