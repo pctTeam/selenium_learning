@@ -1,0 +1,4 @@
+﻿TypeText "￹text￺TP-EPF-TOKEN￻"
+KeyDown ￹keyToPress￺TP-EPF-TOKEN￻
+KeyUp ￹keyToRelease￺TP-EPF-TOKEN￻
+TypeEncodedText "￹text￺TP-EPF-TOKEN￻", "￹optionalKey￺TP-EPF-TOKEN￻"
